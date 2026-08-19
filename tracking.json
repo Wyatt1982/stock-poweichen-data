@@ -102,6 +102,17 @@
         "trigger_clause": "依 7.3.4『重複模式』條款觸發（同型態失誤 n=3 正式樣本，連同示範日為 n=4，超過門檻）；非 8.3 條件式統計規則，故不受 20/30 筆樣本門檻限制。",
         "falsification": "若接下來 5 次正式預測中，下緣被跌破的次數 ≥ 上緣被突破的次數，代表偏誤已消除或反轉，本規則應停用並重新評估。",
         "status": "registered"
+      },
+      {
+        "id": "proposed_06",
+        "registered_at": "2026-08-19",
+        "effective_from": "立即",
+        "title": "修正 2026-08-15 執行層修正②：caffeinate 除名，本機排程改雲端",
+        "evidence": "四次排程失效的 pmset 日誌全為 `Entering Sleep state due to 'Clamshell Sleep' ... Using Batt`（闔蓋＋電池）。macOS 在此組合下必然睡眠；caffeinate 擋的是 idle sleep，擋不了 clamshell sleep。",
+        "rule": "① 8/15 登記之修正②中的「caffeinate 防睡眠」除名——它針對的失敗模式與實際發生者不同，保留只會製造已修好的錯覺。② 盤前與盤後排程一律移至雲端執行（GitHub Actions cron，或延續 8/17 上線的雲端 routine 架構讓雲端連盤後一起跑），本機僅負責覆核、排版與部署。",
+        "economic_rationale": "排程可靠度是整個長期追蹤的前提；樣本一旦流失無法補救，且流失往往集中在市場轉折期（波動大＝主機使用模式也最不規律），造成的偏誤不是隨機的。",
+        "second_failure_mode": "8/19 盤後延遲 6h44m 發生於主機清醒狀態，成因與睡眠無關，疑為排程觸發後停在權限確認。此為獨立的第二個失敗模式，須與睡眠問題分開處理——若每次排程都需人在場點一次允許，它本質上就不是自動排程。",
+        "status": "registered"
       }
     ],
     "methodology_updates_check": [
